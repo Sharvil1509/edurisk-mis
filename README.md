@@ -2,7 +2,7 @@
 
 A web-based Management Information System for tracking student dropout risk and surfacing learning equity gaps across socioeconomic groups. Built for schools and NGOs working toward UN SDG-4.
 
-Live demo: [edurisk-mis.vercel.app](https://edurisk-mis.vercel.app)
+Live demo: [https://edurisk-mis.vercel.app](https://edurisk-mis-sharvil.vercel.app/)
 
 ---
 
