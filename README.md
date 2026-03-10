@@ -1,114 +1,114 @@
-# 🎓 EduRisk MIS — Learning Equity & Student Risk Platform
-### AI-Driven Management Information System | UN SDG-4 Aligned
+# EduRisk MIS
+
+A web-based Management Information System for tracking student dropout risk and surfacing learning equity gaps across socioeconomic groups. Built for schools and NGOs working toward UN SDG-4.
+
+Live demo: [edurisk-mis.vercel.app](https://edurisk-mis.vercel.app)
 
 ---
 
-## 🚀 Deploy to Vercel in 5 Minutes (Free)
+## What it does
 
-### Step 1 — Upload to GitHub
-1. Go to **github.com** → Sign in (or create free account)
-2. Click **"New repository"** → name it `edurisk-mis` → click **Create**
-3. Upload ALL these files by dragging them into GitHub's upload area
-4. Click **"Commit changes"**
+Schools often don't know a student is at risk of dropping out until it's too late. EduRisk MIS monitors attendance, grades, and engagement in real time, scores each student's dropout risk, and generates a personalized AI intervention plan — before the student falls through the cracks.
 
-### Step 2 — Deploy on Vercel
-1. Go to **vercel.com** → Sign in with GitHub (free)
-2. Click **"Add New Project"**
-3. Select your `edurisk-mis` repository
-4. Vercel auto-detects Vite — just click **"Deploy"**
-5. Wait ~60 seconds → 🎉 Your live link is ready!
-
-### Step 3 — Add Claude API Key (for real AI plans)
-1. In Vercel dashboard → go to your project → **Settings → Environment Variables**
-2. Add: `VITE_ANTHROPIC_API_KEY` = your Claude API key
-3. Redeploy (Vercel dashboard → Deployments → Redeploy)
-
-> **Get a free API key:** console.anthropic.com → API Keys → Create Key
-> Free tier gives you $5 credit — enough for hundreds of demo plans
+Beyond individual risk, the platform surfaces the bigger picture: how much worse Low SES students perform compared to their High SES peers, and what NGOs can do about it.
 
 ---
 
-## 💻 Run Locally
+## Features
+
+- **Risk Dashboard** — KPI cards, risk distribution chart, and attendance vs. grade scatter plot across the full cohort
+- **Student Profiles** — Individual drawer with skill radar, 8-week trendline, subject grade breakdown, and 12-month attendance heatmap
+- **AI Intervention Plans** — Personalized 6-section support plans generated in real time for each at-risk student
+- **Equity Insights** — Side-by-side SES comparison with gap analysis and NGO intervention recommendations
+- **Leaderboard** — Top performers ranked by grade, attendance, engagement, and risk score
+- **CSV Import** — Upload student data directly from any school ERP export
+- **Report Export** — Download a full student report for offline sharing with parents or field teams
+- **Role-Based Access** — Admin, Teacher, NGO Analyst, and Student views with Supabase authentication
+- **Dark / Light Mode** — Toggle from the sidebar
+
+---
+
+## Risk Algorithm
+
+```
+Risk Score = 100 − (0.5 × Attendance + 0.3 × AvgGrade + 0.2 × Engagement)
+```
+
+Attendance carries the most weight because it is the strongest single predictor of dropout in the literature. The score runs from 0 (no risk) to 100 (critical).
+
+| Score | Status |
+|---|---|
+| Above 75 | Critical — immediate intervention |
+| 50 to 75 | Warning — monitor and support |
+| Below 50 | Stable — enrich and develop |
+
+---
+
+## Tech Stack
+
+- React 18 + Vite
+- Tailwind CSS
+- Recharts
+- Supabase (auth + PostgreSQL)
+- Vercel (deployment)
+
+---
+
+## Getting Started
 
 ```bash
-# 1. Install dependencies
+# Clone the repo
+git clone https://github.com/Sharvil1509/edurisk-mis.git
+cd edurisk-mis
+
+# Install dependencies
 npm install
 
-# 2. Create .env file with your API key
-echo "VITE_ANTHROPIC_API_KEY=your_key_here" > .env
+# Set up environment variables
+cp .env.example .env
+# Fill in your Supabase and Anthropic API keys in .env
 
-# 3. Start development server
+# Start dev server
 npm run dev
+```
 
-# 4. Open browser at http://localhost:3000
+Open `http://localhost:3000` in your browser.
+
+---
+
+## Environment Variables
+
+```
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_ANTHROPIC_API_KEY=your_anthropic_api_key
+```
+
+Never commit your `.env` file. It is already listed in `.gitignore`.
+
+---
+
+## Project Structure
+
+```
+src/
+└── App.jsx        # All components and application logic
+    main.jsx       # React entry point
+    index.css      # Tailwind base styles
 ```
 
 ---
 
-## 📁 Project Structure
+## SDG-4 Alignment
 
-```
-edurisk-mis/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── App.jsx          ← Main application (all components)
-│   ├── main.jsx         ← React entry point
-│   └── index.css        ← Tailwind + custom styles
-├── index.html
-├── package.json
-├── vite.config.js
-├── tailwind.config.js
-├── postcss.config.js
-└── vercel.json          ← SPA routing for Vercel
-```
+This project was built with UN Sustainable Development Goal 4 in mind — quality, inclusive, and equitable education for all. The equity gap analysis in particular is designed to give NGOs concrete data on where and how socioeconomic disadvantage is affecting student outcomes, so resources can be directed where they matter most.
 
 ---
 
-## ✨ Features
+## Research
 
-| Feature | Description |
-|---|---|
-| 🏠 Landing Page | Professional hero page for judges/stakeholders |
-| 🔐 Login System | Demo auth (any credentials work) |
-| 📊 Dashboard | 4 KPI cards, Risk pie chart, Attendance scatter plot |
-| 🔍 Smart Filters | Filter by Status, Grade Level, SES group |
-| 📋 Student Table | Sortable risk heatmap with progress bars |
-| 👤 Student Drawer | Radar chart, trendline, AI intervention plan |
-| 🤖 Claude AI | Real-time streaming intervention plans per student |
-| ⚖️ Equity Tab | Low vs High SES gap analysis + NGO recommendations |
-| 📥 CSV Export | Download all student data instantly |
+An IEEE-format research paper documenting the system's methodology, risk algorithm, equity analysis, and experimental results is included in the repository.
 
 ---
 
-## 🧮 Risk Algorithm
-
-```
-Risk Score = 100 - (0.5 × Attendance + 0.3 × AvgGrade + 0.2 × Engagement)
-
-Critical  → Risk Score > 75   (red)
-Warning   → Risk Score 50–75  (amber)
-Stable    → Risk Score < 50   (green)
-```
-
----
-
-## 🌍 SDG-4 Alignment
-
-This platform directly supports **UN Sustainable Development Goal 4: Quality Education** by:
-- Identifying at-risk students before they drop out
-- Surfacing systemic socioeconomic inequities in education
-- Generating AI-powered personalized intervention plans
-- Providing NGOs with data-driven decision support
-
----
-
-## 🏆 For Judges / Evaluators
-
-**Demo login:** Any email + any password works  
-**Key feature to demo:** Click any Critical student → watch Claude AI generate a live intervention plan  
-**Equity story:** Switch to "Equity Insights" tab → show the SES performance gap data
-
----
-
-Built with React 18 · Vite · Tailwind CSS · Recharts · Claude AI
+Built by Sharvil Nikam · Pune, Maharashtra, India · 2025
