@@ -91,24 +91,23 @@ Never commit your `.env` file. It is already listed in `.gitignore`.
 ## Project Structure
 
 ```
-src/
-└── App.jsx        # All components and application logic
-    main.jsx       # React entry point
-    index.css      # Tailwind base styles
+edurisk-mis/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── App.jsx              # All components, logic, charts, AI plans
+│   ├── main.jsx             # React entry point
+│   └── index.css            # Tailwind base + IBM Plex font import
+├── .env.example             # Template for environment variables
+├── .gitignore               # Ignores node_modules, .env, dist
+├── index.html               # Vite HTML entry point
+├── package.json             # Dependencies and scripts
+├── package-lock.json        # Locked dependency versions
+├── postcss.config.js        # PostCSS config for Tailwind
+├── tailwind.config.js       # Tailwind configuration
+├── vite.config.js           # Vite build configuration
+└── vercel.json              # SPA routing fix for Vercel deployment
 ```
+##License
 
----
-
-## SDG-4 Alignment
-
-This project was built with UN Sustainable Development Goal 4 in mind — quality, inclusive, and equitable education for all. The equity gap analysis in particular is designed to give NGOs concrete data on where and how socioeconomic disadvantage is affecting student outcomes, so resources can be directed where they matter most.
-
----
-
-## Research
-
-An IEEE-format research paper documenting the system's methodology, risk algorithm, equity analysis, and experimental results is included in the repository.
-
----
-
-Built by Sharvil Nikam · Pune, Maharashtra, India · 2025
+This project is under MIT License
